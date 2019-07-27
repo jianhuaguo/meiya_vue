@@ -131,7 +131,7 @@
 
         },
         tableData:[],
-        pagesize:1,
+        pagesize:5,
 
         currentPage:1,
         start:1,

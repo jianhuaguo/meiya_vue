@@ -136,6 +136,66 @@
       </el-table-column>
     </el-table>
     </div>
+    <div class="overview-layout">
+      <el-row :gutter="20">
+        <el-col :span="12">
+          <div class="out-border">
+            <div class="layout-title">今日最受好评商家</div>
+            <div style="padding: 40px">
+              <el-table
+                :data="tableDatabest"
+                style="width: 100%"
+              >
+                <el-table-column
+                  prop="storename"
+                  label="店家"
+
+                  >
+                </el-table-column>
+                <el-table-column
+                  prop="score"
+                  label="评分"
+
+                 >
+                </el-table-column>
+                <el-table-column
+                  prop="count"
+                  label="成交笔数"
+                >
+                </el-table-column>
+              </el-table>
+            </div>
+          </div>
+        </el-col>
+        <el-col :span="12">
+          <div class="out-border">
+            <div class="layout-title">今日口碑不佳商家</div>
+            <div style="padding: 40px">
+              <el-table
+                :data="tableDataworst"
+                style="width: 100%"
+              >
+                <el-table-column
+                  prop="storename"
+                  label="店家"
+                 >
+                </el-table-column>
+                <el-table-column
+                  prop="score"
+                  label="评分"
+                >
+                </el-table-column>
+                <el-table-column
+                  prop="count"
+                  label="成交笔数"
+                >
+                </el-table-column>
+              </el-table>
+            </div>
+          </div>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 
 </template>
@@ -168,6 +228,8 @@
           monthuser:0,
           countuser:0
         },
+        tableDatabest:[],
+        tableDataworst:[],
         img_home_order,
         img_home_today_amount,
         img_home_yesterday_amount
@@ -189,8 +251,19 @@
       }).catch(function (error) {
         console.log(error);
       });
+
       this.$ajax('http://localhost:6925/homepage4').then(res => {
         this.tableData=res.data
+      }).catch(function (error) {
+        console.log(error);
+      });
+      this.$ajax('http://localhost:6925/homepage5').then(res => {
+        this.tableDatabest=res.data
+      }).catch(function (error) {
+        console.log(error);
+      });
+      this.$ajax('http://localhost:6925/homepage6').then(res => {
+        this.tableDataworst=res.data
       }).catch(function (error) {
         console.log(error);
       });

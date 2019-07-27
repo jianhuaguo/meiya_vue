@@ -33,16 +33,24 @@
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="5">
-        <template slot="title"><i class="el-icon-s-data"></i>相关统计</template>
+        <template slot="title"><i class="el-icon-food"></i>活动管理</template>
         <el-menu-item-group>
-          <el-menu-item index="5-1"><router-link to="/order/chart">订单分析</router-link></el-menu-item>
-          <el-menu-item index="5-2"><router-link to="/order/ordersummary">运营概述</router-link></el-menu-item>
+          <el-menu-item index="5-1"><router-link to="/seckill/release">发布秒杀</router-link></el-menu-item>
+          <el-menu-item index="5-2"><router-link to="/seckill/examine">秒杀商品审核</router-link></el-menu-item>
+          <el-menu-item index="5-3"><router-link to="/seckill/summary">活动统计</router-link></el-menu-item>
         </el-menu-item-group>
       </el-submenu>
       <el-submenu index="6">
+        <template slot="title"><i class="el-icon-s-data"></i>相关统计</template>
+        <el-menu-item-group>
+          <el-menu-item index="6-1"><router-link to="/order/chart">订单分析</router-link></el-menu-item>
+          <el-menu-item index="6-2"><router-link to="/order/ordersummary">运营概述</router-link></el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
+      <el-submenu index="7">
         <template slot="title"><i class="el-icon-s-marketing"></i>预测</template>
         <el-menu-item-group>
-          <el-menu-item index="6-1"><router-link to="/predicted">订单预测</router-link></el-menu-item>
+          <el-menu-item index="7-1"><router-link to="/predicted">订单预测</router-link></el-menu-item>
         </el-menu-item-group>
       </el-submenu>
     </el-menu>

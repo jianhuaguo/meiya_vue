@@ -125,6 +125,7 @@
 
   export default {
     name: 'store_list',
+    inject: ['reload'],
     data () {
       return {
         searchname:"",//搜索商家的姓名
@@ -142,7 +143,7 @@
         ],
         category: [],
         // pagesize:1,//每页多少数据 以下是实现分页
-        pagesize:1,
+        pagesize:5,
 
         currentPage:1,
         start:1,
@@ -267,7 +268,9 @@
       .catch((error)=>{
         console.log(error);
       });
-    location.reload();
+    setTimeout(() =>{this.reload();},1500);
+
+    // location.reload();
   },
       unfreezeStore: function(val)
       {
@@ -284,7 +287,10 @@
           .catch((error)=>{
             console.log(error);
           });
-        location.reload();
+        // location.reload();
+        setTimeout(() =>{
+          this.reload();
+        },1500);
       },
       //点击编辑
       handleEdit(index, row) {
@@ -327,8 +333,10 @@
 
         //这里再向后台发个post请求重新渲染表格数据
 
-      location.reload();
-
+      // location.reload();
+        setTimeout(() =>{
+          this.reload();
+        },1500);
         this.editFormVisible = false;
       }
 
