@@ -13,6 +13,10 @@ import ordersummary from '@/components/order/ordersummary'
 import adduserlist from '@/components/user/adduserlist'
 import Login from '@/components/Login'
 import store_examine from '@/components/Store/store_examine'
+import seckillrelease from '@/components/seckill/seckillrelease'
+import seckillexamine from '@/components/seckill/seckillexamine'
+import seckillsummary from '@/components/seckill/seckillsummary'
+
 Vue.use(Router)
 
 export default new Router({
@@ -63,6 +67,18 @@ export default new Router({
         {
           path:'/user/adduserlist',
           component:adduserlist
+        },
+        {
+          path:'/seckill/examine',
+          component:seckillexamine
+        },
+        {
+          path:'/seckill/release',
+          component:seckillrelease
+        },
+        {
+          path:'/seckill/summary',
+          component:seckillsummary
         }
       ]
     }

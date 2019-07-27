@@ -117,6 +117,10 @@
   import ordersummary from './order/ordersummary'
   import adduserlist from './user/adduserlist'
   import store_examine from './Store/store_examine'
+  import seckillrelease from './seckill/seckillrelease'
+  import seckillexamine from './seckill/seckillexamine'
+  import seckillsummary from './seckill/seckillsummary'
+
   export default {
     data() {
       var checkAge = (rule, value, callback) => {
@@ -174,7 +178,10 @@
       userlist,
       ordersummary,
       adduserlist,
-      store_examine
+      store_examine,
+      seckillexamine,
+      seckillrelease,
+      seckillsummary
     },
     created () {
       this.$ajax('http://localhost:6925/adminname').then(res => {
