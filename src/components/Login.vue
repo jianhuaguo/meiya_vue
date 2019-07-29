@@ -99,7 +99,8 @@
         // 对话框显示和隐藏
         dialogVisi: false,
         dialogVisible: false,
-        phonevisible: false
+        phonevisible: false,
+        hello:""
       }
     },
     methods: {
@@ -110,7 +111,7 @@
         }).catch(function (error) {
           console.log(error);
         });
-        setTimeout(() =>{},1000);//等一秒再判断
+        setTimeout(() =>{this.hello="等一等"},1000);//等一秒再做
         if(this.phonecount>0)
         {
 
@@ -156,6 +157,7 @@
           }).catch(function (error) {
             console.log(error);
           });
+          setTimeout(() =>{this.hello="等一等"},1000);//等一秒再判断
           this.$router.push("/index")
         }
         else{
