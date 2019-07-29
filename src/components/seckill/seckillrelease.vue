@@ -28,7 +28,7 @@
     </el-card>
     <el-card class="operate-container" shadow="never">
       <i class="el-icon-tickets"></i>
-      <span>数据列表</span>
+      <span>活动列表</span>
       <el-button size="mini" class="btn-add" @click="handleAdd()" style="margin-left: 20px">添加活动</el-button>
     </el-card>
     <div class="table-container">
@@ -89,7 +89,7 @@
       </el-pagination>
     </div>
     <el-dialog
-      title="添加活动"
+      title="秒杀活动"
       :visible.sync="dialogVisible"
       width="40%">
       <el-form :model="flashPromotion"
@@ -145,6 +145,7 @@
 
 
   export default {
+    inject: ['reload'],
     name: 'seckillrelease',
 
     data(){
@@ -173,11 +174,6 @@
       //从后面得所有活动的数据
       this.$ajax.post('http://localhost:6925/seckill/selectall',{currentPage:this.listQuery.pageNum,searchname:this.listQuery.keyword,pagesize:this.listQuery.pageSize}).then((response)=>{
        console.log(response)
-        // for(var i=0;i<response.data.eventsdata.length;i++)
-        // {
-        //   response.data.eventsdata[i].start_time=response.data.eventsdata[i].start_time.substring(0,19)//只截取到秒
-        //   response.data.eventsdata[i].end_time=response.data.eventsdata[i].end_time.substring(0,19)
-        // }
        this.list=response.data.eventsdata
         this.total=response.data.number
       })
@@ -196,6 +192,62 @@
     },
 
     methods:{
+
+      //改变状态
+      handleStatusChange(index, row) {
+        this.$confirm('是否要修改该状态?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+
+          this.$ajax.post('http://localhost:6925/event/changestatus',{id:row.id,status:row.status}).then((response)=>{
+            this.$message({
+              type: 'success',
+              message: '更新状态成功!'
+            });
+          })
+            .catch((error)=>{
+              console.log(error);
+            });
+          // updateStatus(row.id, {status: row.status}).then(response => {
+          //   this.$message({
+          //     type: 'success',
+          //     message: '修改成功!'
+          //   });
+          // });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '取消修改'
+          });
+          this.getList();
+        });
+      },
+      handleDelete(index, row)
+      {
+        this.$confirm('是否要删除该活动?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$ajax.post('http://localhost:6925/event/delete',{id:row.id}).then((response)=>{
+            this.$message({
+              type: 'success',
+              message: '删除成功!'
+            });
+          })
+            .catch((error)=>{
+              console.log(error);
+            });
+
+        });
+
+        setTimeout(() =>{
+          this.reload();
+        },1000);
+      },
+      //编辑按钮
       handleUpdate(index, row) {
         console.log(index)
         console.log(row)
@@ -262,6 +314,9 @@
                 type: 'success'
               });
               this.dialogVisible =false;
+              setTimeout(() =>{
+                this.reload();
+              },1500);
             })
               .catch((error)=>{
                 console.log(error);
@@ -279,6 +334,9 @@
                 type: 'success'
               });
               this.dialogVisible =false;
+              setTimeout(() =>{
+                this.reload();
+              },1500);
             })
               .catch((error)=>{
                 console.log(error);

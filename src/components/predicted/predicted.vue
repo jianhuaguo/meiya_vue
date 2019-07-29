@@ -1,7 +1,7 @@
 <template>
 <div>
-  <div>
-    商家编号<input v-model="shopid">
+  <div align="center">
+    <span>商家编号</span><input v-model="shopid">
     <el-button type="primary" @click.native="predict3()">查询</el-button>
   </div>
   <el-table

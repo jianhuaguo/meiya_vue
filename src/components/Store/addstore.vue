@@ -1,7 +1,7 @@
 <template>
   <el-form ref="form" :model="store" label-width="80px">
 
-    <el-form-item label="姓名">
+    <el-form-item label="店名">
       <el-input v-model="store.name"></el-input>
     </el-form-item>
 
@@ -31,7 +31,7 @@
 
     <el-form-item label="菜系">
       <el-select v-model="store.category_id" placeholder="请选择菜系">
-        <el-option v-for= "ca in category"  v-bind:value="ca.id">{{ca.name}}</el-option>
+        <el-option v-for= "ca in category"  :value="ca.id"  :label="ca.name" :key="ca.id">{{ca.name}}</el-option>
       </el-select>
     </el-form-item>
 
@@ -84,8 +84,9 @@
       },
         created(){
         this.$ajax('http://localhost:6925/category/show').then(res => {
-          this.category = res.data
           console.log(res.data)
+          this.category = res.data
+
         }).catch(function (error) {
           console.log(error);
         });

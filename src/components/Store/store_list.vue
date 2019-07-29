@@ -96,8 +96,9 @@
 
         <el-form-item label="菜系">
           <el-select v-model="editForm.category_id" placeholder="请选择菜系">
-            <el-option v-for= "ca in category"  v-bind:value="ca.id">{{ca.name}}</el-option>
+            <el-option v-for= "ca in category"  :value="ca.id"  :label="ca.name" :key="ca.id">{{ca.name}}</el-option>
           </el-select>
+
         </el-form-item>
         <el-form-item label="联系方式">
           <el-input v-model="editForm.phone"></el-input>
