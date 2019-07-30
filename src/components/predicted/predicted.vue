@@ -42,24 +42,37 @@
       //预测未来三天
       predict3()
       {
-        console.log(this.shopid)
-        this.$ajax('http://localhost:6925/predicted?shopid='+this.shopid).then(res => {
-          console.log(res);
-          var objArr=[];
-          for (var i=1;i<=res.data.sum.length;i++)
-          {
-            var obj={};
-            obj._day=i;
-            obj._sum=res.data.sum[i-1];
-            obj._count=res.data.count[i-1];
-            objArr.push(obj);
-          }
-            this.tableData=objArr;
+      //需要先判断有没有这个商家
+        this.$ajax.post('http://localhost:6925/predicted/selectbyid',{id:this.shopid}).then((response)=>{
+          console.log(this.shopid)
+          console.log(response)
+         if(response.data>0)
+         {
+
+           this.$ajax('http://localhost:6925/predicted?shopid='+this.shopid).then(res => {
+             var objArr=[];
+             for (var i=1;i<=res.data.sum.length;i++)
+             {
+               var obj={};
+               obj._day=i;
+               obj._sum=res.data.sum[i-1];
+               obj._count=res.data.count[i-1];
+               objArr.push(obj);
+             }
+             this.tableData=objArr;
+           })
+             .catch((error)=>{
+               console.log(error);
+             });
+         }
+         else {
+           this.$message.error('不存在该商家');
+         }
         })
           .catch((error)=>{
-            window.location.href = '/login'
             console.log(error);
           });
+
       }
 
     }

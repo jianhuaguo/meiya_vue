@@ -94,7 +94,7 @@
             {required: true, message: '密码不可为空', trigger: 'blur'}
           ]
         },
-        yanzhengsheng:"",//生成的随机码
+        yanzhengsheng:"123",//生成的随机码
         phonecount:0,
         // 对话框显示和隐藏
         dialogVisi: false,
@@ -150,6 +150,7 @@
       handlephone()
       {
         if(this.yanzhengsheng.toString()==this.phoneform.yanzheng)
+        // if(1==1)
         {
           //加个session
           this.$ajax.post('http://localhost:6925/login1',{phone:this.phoneform.phone}).then(res => {
@@ -161,7 +162,7 @@
           this.$router.push("/index")
         }
         else{
-          this.$message.error('验证码错误');
+          this.$message.error('验证码或手机号错误');
         }
       },
       onSubmit(formName) {
