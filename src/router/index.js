@@ -16,7 +16,7 @@ import store_examine from '@/components/Store/store_examine'
 import seckillrelease from '@/components/seckill/seckillrelease'
 import seckillexamine from '@/components/seckill/seckillexamine'
 import seckillsummary from '@/components/seckill/seckillsummary'
-
+import orderlist from '@/components/order/orderlist'
 Vue.use(Router)
 
 export default new Router({
@@ -79,6 +79,10 @@ export default new Router({
         {
           path:'/seckill/summary',
           component:seckillsummary
+        },
+        {
+          path:'/order/orderlist',
+          component:orderlist
         }
       ]
     }

@@ -99,6 +99,7 @@
             <el-option v-for= "ca in category"  :value="ca.id"  :label="ca.name" :key="ca.id">{{ca.name}}</el-option>
           </el-select>
 
+
         </el-form-item>
         <el-form-item label="联系方式">
           <el-input v-model="editForm.phone"></el-input>
