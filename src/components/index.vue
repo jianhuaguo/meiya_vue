@@ -102,7 +102,8 @@
 </template>
 <style>
   .el-header {
-    background-color: #B3C0D1;
+    /*上部的颜色*/
+    background-color: #eff2f7;
     color: #333;
     line-height: 60px;
   }

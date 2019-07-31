@@ -1,6 +1,9 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 
+
+
+
 import Vue from 'vue'
 import App from './App'
 import router from './router'
@@ -10,6 +13,9 @@ import 'iview/dist/styles/iview.css'
 // 引入vue-easytable
 import 'vue-easytable/libs/themes-base/index.css'
 import {VTable, VPagination} from 'vue-easytable'
+
+
+
 
 Vue.use(iView)
 Vue.component(VTable.name, VTable)
@@ -35,6 +41,8 @@ Vue.config.productionTip = false
 
 import  QS from 'qs'
 //导入vue-router
+//引入主题 这个要放在本来样式的下面
+import '../theme/index.css'
 
 import VueRouter from 'vue-router'
 

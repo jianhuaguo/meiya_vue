@@ -77,6 +77,15 @@
     },
    created(){
      this.$ajax.post('http://localhost:6925/order/orderlist',{currentPage:this.listQuery.pageNum,pagesize:this.listQuery.pageSize,store_id:this.searchid,user_id:this.searchid}).then((response)=>{
+       for(var i=0;i<response.data.orderdata.length;i++)
+       {
+         switch (response.data.orderdata[i].status) {
+           case 0:response.data.orderdata[i].status="未付款"; break;
+           case 1:response.data.orderdata[i].status="已付款"; break;
+           case 2:response.data.orderdata[i].status="已发货"; break;
+           default: response.data.orderdata[i].status="交易成功"
+         }
+       }
        this.list=response.data.orderdata
        this.total=response.data.number
      })
@@ -98,7 +107,17 @@
      getList() {
        this.listLoading = true;
        this.$ajax.post('http://localhost:6925/order/orderlist',{currentPage:this.listQuery.pageNum,pagesize:this.listQuery.pageSize,store_id:this.searchid,user_id:this.searchid}).then((response)=>{
-         console.log(response)
+
+         for(var i=0;i<response.data.orderdata.length;i++)
+         {
+           switch (response.data.orderdata.status) {
+             case 0:response.data.orderdata[i].status="未付款"; break;
+             case 1:response.data.orderdata[i].status="已付款"; break;
+             case 2:response.data.orderdata[i].status="已发货"; break;
+             default: response.data.orderdata[i].status="交易成功"
+           }
+         }
+
          this.list=response.data.orderdata
          this.total=response.data.number
        })
