@@ -83,7 +83,10 @@
            case 0:response.data.orderdata[i].status="未付款"; break;
            case 1:response.data.orderdata[i].status="已付款"; break;
            case 2:response.data.orderdata[i].status="已发货"; break;
-           default: response.data.orderdata[i].status="交易成功"
+           case 3:response.data.orderdata[i].status="交易成功"; break;
+           case 4:response.data.orderdata[i].status="交易取消"; break;
+           case 5:response.data.orderdata[i].status="已退款"; break;
+           default: response.data.orderdata[i].status="支付超时取消"
          }
        }
        this.list=response.data.orderdata
@@ -114,7 +117,10 @@
              case 0:response.data.orderdata[i].status="未付款"; break;
              case 1:response.data.orderdata[i].status="已付款"; break;
              case 2:response.data.orderdata[i].status="已发货"; break;
-             default: response.data.orderdata[i].status="交易成功"
+             case 3:response.data.orderdata[i].status="交易成功"; break;
+             case 4:response.data.orderdata[i].status="交易取消"; break;
+             case 5:response.data.orderdata[i].status="已退款"; break;
+             default: response.data.orderdata[i].status="支付超时取消"
            }
          }
 
