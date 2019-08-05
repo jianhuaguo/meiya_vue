@@ -1,6 +1,6 @@
 # vue
 
-> A Vue.js project
+> 这是实习时候写的一个订餐系统的后台管理端，这个仓库是vue前端，[后台代码](https://github.com/jianhuaguo/meiya_springboot),后台仓库是用Springboot写的，也有录的视频。
 
 ## Build Setup
 
